@@ -4,7 +4,8 @@ services:
 
   # wordpress
   wordpress:
-    image: wordpress:latest
+    build:
+      context: ./
     container_name: {project_prefix}_wordpress
     ports:
       - {server_port}:80
