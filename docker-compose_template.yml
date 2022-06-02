@@ -12,8 +12,12 @@ services:
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_PASSWORD: {db_password}
+      WORDPRESS_DB_USER: root
       WORDPRESS_DB_NAME: {db_name}
       WORDPRESS_DB_PREFIX: {db_prefix}
+      WORDPRESS_DEBUG: 1
+      PHP_IDE_CONFIG: serverName=phpstorm
+      XDEBUG_CONFIG: remote_port=9001
     volumes:
       - ./wordpress:/var/www/html
     networks:
@@ -33,6 +37,7 @@ services:
     image: mariadb:latest
     container_name: {project_prefix}_db
     environment:
+      MYSQL_DATABASE: wordpress
       MYSQL_ROOT_PASSWORD: {db_password}
     volumes:
       - {project_prefix}_db-volume:/var/lib/mysql
